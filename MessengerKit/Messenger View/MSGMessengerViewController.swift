@@ -91,6 +91,11 @@ open class MSGMessengerViewController: UIViewController {
     public var shouldScrollToBottom: Bool = true
     
     
+    /// Decides whether the view controller should use the internal view set up implementation.
+    /// Should be set in loadView in sub class, before invoking super.loadView()
+    /// Defaults to `false`.
+    public var shouldUseMSGMessengerView: Bool = false
+    
     // MARK: - Lifecycle
     
     open override func viewDidLoad() {
@@ -124,7 +129,11 @@ open class MSGMessengerViewController: UIViewController {
     }
     
     open override func loadView() {
-        loadFromDefaultNib()
+        if shouldUseMSGMessengerView {
+            loadFromDefaultNib()
+        } else {
+            super.loadView()
+        }
     }
     
     open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
