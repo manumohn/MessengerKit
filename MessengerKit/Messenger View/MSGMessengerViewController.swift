@@ -162,8 +162,8 @@ open class MSGMessengerViewController: UIViewController {
         
         if let view = view as? MSGMessengerView {
             view.inputViewContainer.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor).isActive = true
+            view.addLayoutGuide(keyboardLayoutGuide)
         }
-        view.addLayoutGuide(keyboardLayoutGuide)
         setUpInputTargets()
     }
     
